@@ -25,5 +25,11 @@ The code chunk below reads and cleans data for 2018.
 precipitation_2018 = read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "2018 Precipitation", range = "A2:B14") %>%
   janitor::clean_names() %>%
   mutate(year = 2018)
-  
 ```
+
+The code chunk below reads and cleans data for 2019.
+```{r}
+precipitation_2019 = 
+read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "2019 Precipitation", range = "A2:B14")
+```
+
