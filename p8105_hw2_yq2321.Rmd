@@ -43,4 +43,4 @@ precipitation_combined = bind_rows(precipitation_2018, precipitation_2019) %>%
   mutate(month = month.name[month])
 ```
 
-The number of observations in the resulting Mr.Trash Wheel dataset is `r nrow(trash_wheel_sheet)`. The number of observations in the resulting combined precipitation dataset is `r nrow(precipitation_combined)`. The total precipitation in 2018 is `r sum(pull(precipitation_2018, total))`.
+The number of observations in the resulting Mr.Trash Wheel dataset is `r nrow(trash_wheel_sheet)`. The number of observations in the resulting combined precipitation dataset is `r nrow(precipitation_combined)`. The total precipitation in 2018 is `r sum(pull(precipitation_2018, total))`. The median number of sports balls in a dumpster in 2019 is `r median(pull(filter(trash_wheel_sheet, year == 2019), sports_balls))`.
