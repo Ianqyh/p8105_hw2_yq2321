@@ -36,3 +36,8 @@ read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "2019 P
   mutate(year = 2019)
 ```
 
+The code chunk below combines precipitation datasets and converts month to a character variable.
+
+```{r}
+precipitation_combined = bind_rows(precipitation_2018, precipitation_2019)
+```
