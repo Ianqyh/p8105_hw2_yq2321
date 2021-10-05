@@ -42,3 +42,5 @@ The code chunk below combines precipitation datasets and converts month to a cha
 precipitation_combined = bind_rows(precipitation_2018, precipitation_2019) %>%
   mutate(month = month.name[month])
 ```
+
+The number of observations in the resulting Mr.Trash Wheel dataset is `r nrow(trash_wheel_sheet)`. The number of observations in the resulting combined precipitation dataset is `r nrow(precipitation_combined)`.
