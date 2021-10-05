@@ -51,7 +51,8 @@ Problem 2
 The code chunk below deals with data in pols-month.csv.
 
 ```{r}
-pols_month_data = read_csv("hw2_data/fivethirtyeight_datasets/pols-month.csv")
+pols_month_data = read_csv("hw2_data/fivethirtyeight_datasets/pols-month.csv") %>% 
+  separate(mon, into = c("year", "month", "day"))
 ```
 
 
