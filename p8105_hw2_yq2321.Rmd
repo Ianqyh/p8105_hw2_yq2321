@@ -70,6 +70,9 @@ snp_data = read_csv("hw2_data/fivethirtyeight_datasets/snp.csv") %>%
 
 snp_data_1 = filter(snp_data, year >= 50) %>%
   mutate(year = as.numeric(year) + 1900)
+
+snp_data_2 = filter(snp_data, year <= 15) %>%
+  mutate(year = as.numeric(year) + 2000)
 ```
 
 
