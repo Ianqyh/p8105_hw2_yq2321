@@ -76,7 +76,8 @@ snp_data_2 = filter(snp_data, year <= 15) %>%
 
 snp_data_final = bind_rows(snp_data_1, snp_data_2) %>%
   mutate(month = month.name[as.integer(month)]) %>%
-  select(-day)
+  select(-day) %>%
+  relocate(year, month)
 ```
 
 
