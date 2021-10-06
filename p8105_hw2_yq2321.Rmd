@@ -96,4 +96,6 @@ polsmonth_snp = left_join(pols_month_data, snp_data_final)
 polsmonth_snp_unemployment = left_join(polsmonth_snp, unemployment_data)
 ```
 
-The pols-month dataset has dimension `r nrow(pols_month_data)` x `r ncol(pols_month_data)`. The range of years is from 1947 to 2015. Names of key variables are `r names(pols_month_data)`. 
+The pols-month dataset has dimension `r nrow(pols_month_data)` x `r ncol(pols_month_data)`. The range of years is from 1947 to 2015. Names of key variables are `r names(pols_month_data)`. The snp dataset has dimension `r nrow(snp_data_final)` x `r ncol(snp_data_final)`. The range of years is from 1950 to 2015. Names of key variables are `r names(snp_data_final)`.
+
+
