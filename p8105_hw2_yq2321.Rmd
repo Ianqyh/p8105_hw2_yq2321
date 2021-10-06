@@ -104,7 +104,8 @@ Problem 3
 The code chunk below loads and tidies popular baby names data.
 
 ```{r}
-popular_baby_names = read_csv("hw2_data/Popular_Baby_Names.csv")
+popular_baby_names = read_csv("hw2_data/Popular_Baby_Names.csv") %>%
+  janitor::clean_names()
 ```
 
 
