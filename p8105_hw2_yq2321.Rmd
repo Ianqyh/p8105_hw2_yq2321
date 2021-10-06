@@ -84,7 +84,8 @@ The code chunk below deals with unemployment data.
 
 ```{r}
 unemployment_data = read_csv("hw2_data/fivethirtyeight_datasets/unemployment.csv") %>%
-  janitor::clean_names()
+  pivot_longer(Jan:Dec, names_to = "month", values_to = "unemployment rate") %>%
+  janitor::clean_names() 
 
 ```
 
