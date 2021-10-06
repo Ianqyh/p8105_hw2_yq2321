@@ -99,3 +99,13 @@ polsmonth_snp_unemployment = left_join(polsmonth_snp, unemployment_data)
 The pols-month dataset has dimension `r nrow(pols_month_data)` x `r ncol(pols_month_data)`. The range of years is from 1947 to 2015. Names of key variables are `r names(pols_month_data)`. The snp dataset has dimension `r nrow(snp_data_final)` x `r ncol(snp_data_final)`. The range of years is from 1950 to 2015. Names of key variables are `r names(snp_data_final)`. The unemployment dataset has dimension `r nrow(unemployment_data)` x `r ncol(unemployment_data)`. The range of years is from 1948 to 2015. Names of key variables are `r names(unemployment_data)`. The resulting dataset has dimension `r nrow(polsmonth_snp_unemployment)` x `r ncol(polsmonth_snp_unemployment)`. The range of years is from 1947 to 2015. Names of key variables are `r names(polsmonth_snp_unemployment)`.
 
 
+Problem 3
+
+The code chunk below loads and tidies popular baby names data.
+
+```{r}
+popular_baby_names = read_csv("hw2_data/Popular_Baby_Names.csv")
+```
+
+
+
