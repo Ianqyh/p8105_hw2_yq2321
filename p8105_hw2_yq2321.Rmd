@@ -80,5 +80,13 @@ snp_data_final = bind_rows(snp_data_1, snp_data_2) %>%
   relocate(year, month)
 ```
 
+The code chunk below deals with unemployment data.
+
+```{r}
+unemployment_data = read_csv("hw2_data/fivethirtyeight_datasets/unemployment.csv")
+
+```
+
+
 
 
