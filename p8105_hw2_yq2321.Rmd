@@ -67,6 +67,9 @@ The code chunk below deals with data in snap.csv.
 snp_data = read_csv("hw2_data/fivethirtyeight_datasets/snp.csv") %>%
   separate(date, into = c("month", "day", "year")) %>%
   arrange(year, as.numeric(month))
+
+snp_data_1 = filter(snp_data, year >= 50) %>%
+  mutate(year = as.numeric(year) + 1900)
 ```
 
 
