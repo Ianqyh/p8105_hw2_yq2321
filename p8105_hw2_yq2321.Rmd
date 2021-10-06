@@ -60,5 +60,11 @@ pols_month_data = read_csv("hw2_data/fivethirtyeight_datasets/pols-month.csv") %
   select(-day)
 ```
 
+The code chunk below deals with data in snap.csv.
+
+```{r}
+snap_data = read_csv("hw2_data/fivethirtyeight_datasets/snp.csv")
+```
+
 
 
