@@ -106,7 +106,7 @@ The code chunk below loads and tidies popular baby names data.
 ```{r}
 popular_baby_names = read_csv("hw2_data/Popular_Baby_Names.csv") %>%
   janitor::clean_names() %>%
-  mutate(ethnicity = recode(ethnicity, `WHITE NON HISP` = "WHITE NON HISPANIC", `ASIAN AND PACI` = "ASIAN AND PACIFIC", `BLACK NON HISP` = "BLACK NON HISPANIC"))
+  mutate(ethnicity = recode(ethnicity, `WHITE NON HISP` = "WHITE NON HISPANIC", `ASIAN AND PACI` = "ASIAN AND PACIFIC", `BLACK NON HISP` = "BLACK NON HISPANIC"), childs_first_name = str_to_title(childs_first_name))
 ```
 
 
