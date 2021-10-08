@@ -14,7 +14,7 @@ Problem 1
 The code chunk below reads and cleans Mr.Trash Wheel sheet.
 
 ```{r}
-trash_wheel_sheet = read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "Mr. Trash Wheel", range = "A2:N408") %>%
+trash_wheel_sheet = read_excel("hw2_data/Trash-Wheel-Collection-Totals-7-2020-2.xlsx", sheet = "Mr. Trash Wheel", range = "A2:N535") %>%
   janitor::clean_names() %>%
   drop_na(dumpster) %>%
   mutate(sports_balls = round(sports_balls))
@@ -22,7 +22,7 @@ trash_wheel_sheet = read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.xl
 
 The code chunk below reads and cleans precipitation data for 2018.
 ```{r}
-precipitation_2018 = read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "2018 Precipitation", range = "A2:B14") %>%
+precipitation_2018 = read_excel("hw2_data/Trash-Wheel-Collection-Totals-7-2020-2.xlsx", sheet = "2018 Precipitation", range = "A2:B14") %>%
   janitor::clean_names() %>%
   mutate(year = 2018)
 ```
@@ -30,9 +30,8 @@ precipitation_2018 = read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.x
 The code chunk below reads and cleans precipitation data for 2019.
 ```{r}
 precipitation_2019 = 
-read_excel("hw2_data/Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "2019 Precipitation", range = "A2:B14") %>%
+read_excel("hw2_data/Trash-Wheel-Collection-Totals-7-2020-2.xlsx", sheet = "2019 Precipitation", range = "A2:B14") %>%
   janitor::clean_names() %>%
-  drop_na(total) %>%
   mutate(year = 2019)
 ```
 
