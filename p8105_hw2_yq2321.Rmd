@@ -56,12 +56,8 @@ The code chunk below deals with data in pols-month.csv.
 ```{r}
 pols_month_data = read_csv("hw2_data/fivethirtyeight_datasets/pols-month.csv") %>% 
   separate(mon, into = c("year", "month", "day")) %>%
-  mutate(year = as.integer(year), month = as.integer(month), day = as.integer(day)) %>%
-  mutate(month = month.name[(month)]) %>%
-  rename(dem = prez_dem) %>%
-  rename(gop = prez_gop) %>%
-  pivot_longer(c(dem, gop), names_to = "party", values_to = "president") %>%
-  select(-day)
+  mutate(year = as.integer(year), month = month.name[as.integer(month)], president = ifelse(prez_gop == 1, "gop", "dem")) %>%
+  select(-c(day, prez_gop, prez_dem))
 pols_month_data
 ```
 
