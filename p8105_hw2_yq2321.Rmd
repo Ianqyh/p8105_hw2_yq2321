@@ -18,6 +18,7 @@ trash_wheel_sheet = read_excel("hw2_data/Trash-Wheel-Collection-Totals-7-2020-2.
   janitor::clean_names() %>%
   drop_na(dumpster) %>%
   mutate(sports_balls = round(sports_balls))
+trash_wheel_sheet
 ```
 
 The code chunk below reads and cleans precipitation data for 2018.
@@ -25,6 +26,7 @@ The code chunk below reads and cleans precipitation data for 2018.
 precipitation_2018 = read_excel("hw2_data/Trash-Wheel-Collection-Totals-7-2020-2.xlsx", sheet = "2018 Precipitation", range = "A2:B14") %>%
   janitor::clean_names() %>%
   mutate(year = 2018)
+precipitation_2018
 ```
 
 The code chunk below reads and cleans precipitation data for 2019.
@@ -33,6 +35,7 @@ precipitation_2019 =
 read_excel("hw2_data/Trash-Wheel-Collection-Totals-7-2020-2.xlsx", sheet = "2019 Precipitation", range = "A2:B14") %>%
   janitor::clean_names() %>%
   mutate(year = 2019)
+precipitation_2019
 ```
 
 The code chunk below combines precipitation datasets and converts month to a character variable.
@@ -40,6 +43,7 @@ The code chunk below combines precipitation datasets and converts month to a cha
 ```{r}
 precipitation_combined = bind_rows(precipitation_2018, precipitation_2019) %>%
   mutate(month = month.name[month])
+precipitation_combined
 ```
 
 The number of observations in the resulting Mr.Trash Wheel dataset is `r nrow(trash_wheel_sheet)`. Names of key variables are `r names(trash_wheel_sheet)`. The number of observations in the resulting combined precipitation dataset is `r nrow(precipitation_combined)`. Names of key variables are `r names(precipitation_combined)`. The total precipitation in 2018 is `r sum(pull(precipitation_2018, total))`. The median number of sports balls in a dumpster in 2019 is `r median(pull(filter(trash_wheel_sheet, year == 2019), sports_balls))`.
@@ -58,6 +62,7 @@ pols_month_data = read_csv("hw2_data/fivethirtyeight_datasets/pols-month.csv") %
   rename(gop = prez_gop) %>%
   pivot_longer(c(dem, gop), names_to = "party", values_to = "president") %>%
   select(-day)
+pols_month_data
 ```
 
 The code chunk below deals with data in snap.csv.
@@ -77,6 +82,7 @@ snp_data_final = bind_rows(snp_data_1, snp_data_2) %>%
   mutate(month = month.name[as.integer(month)]) %>%
   select(-day) %>%
   relocate(year, month)
+snp_data_final
 ```
 
 The code chunk below deals with unemployment data.
@@ -86,6 +92,7 @@ unemployment_data = read_csv("hw2_data/fivethirtyeight_datasets/unemployment.csv
   pivot_longer(Jan:Dec, names_to = "month", values_to = "unemployment rate") %>%
   janitor::clean_names() %>%
   mutate(month = recode(month, `Jan` = "January", `Feb` = "February", `Mar` = "March", `Apr` = "April", `Jun` = "June", `Jul` = "July", `Aug` = "August", `Sep` = "September", `Oct` = "October", `Nov` = "November", `Dec` = "December"))
+unemployment_data
 ```
 
 The code chunk below join the datasets by merging snp_data_final into pols_month_data, and merging unemployment_data into the result.
@@ -93,6 +100,7 @@ The code chunk below join the datasets by merging snp_data_final into pols_month
 ```{r}
 polsmonth_snp = left_join(pols_month_data, snp_data_final)
 polsmonth_snp_unemployment = left_join(polsmonth_snp, unemployment_data)
+polsmonth_snp_unemployment
 ```
 
 The pols-month dataset has dimension `r nrow(pols_month_data)` x `r ncol(pols_month_data)`. The range of years is from 1947 to 2015. Names of key variables are `r names(pols_month_data)`. The snp dataset has dimension `r nrow(snp_data_final)` x `r ncol(snp_data_final)`. The range of years is from 1950 to 2015. Names of key variables are `r names(snp_data_final)`. The unemployment dataset has dimension `r nrow(unemployment_data)` x `r ncol(unemployment_data)`. The range of years is from 1948 to 2015. Names of key variables are `r names(unemployment_data)`. The resulting dataset has dimension `r nrow(polsmonth_snp_unemployment)` x `r ncol(polsmonth_snp_unemployment)`. The range of years is from 1947 to 2015. Names of key variables are `r names(polsmonth_snp_unemployment)`.
@@ -106,12 +114,14 @@ The code chunk below loads and tidies popular baby names data.
 popular_baby_names = read_csv("hw2_data/Popular_Baby_Names.csv") %>%
   janitor::clean_names() %>%
   mutate(ethnicity = recode(ethnicity, `WHITE NON HISP` = "WHITE NON HISPANIC", `ASIAN AND PACI` = "ASIAN AND PACIFIC ISLANDER", `BLACK NON HISP` = "BLACK NON HISPANIC"), childs_first_name = str_to_title(childs_first_name))
+popular_baby_names
 ```
 
 The code chunk below removes duplicated rows in popular baby names dataset.
 
 ```{r}
 popular_baby_names_filtered = popular_baby_names[!duplicated(popular_baby_names[,1:6]),]
+popular_baby_names_filtered
 ```
 
 The code chunk below produces a well-structured, reader-friendly table showing the rank in popularity of the name “Olivia” as a female baby name over time. 
